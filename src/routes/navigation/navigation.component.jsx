@@ -3,8 +3,7 @@ import CrwnLogo from '../../assets/crown.svg?react'
 
 import './navigation.styles.scss'
 
-// const Navigation = () => {
-function Navigation() {
+const Navigation = () => {
     return (
         <>
             <div className='navigation'>
@@ -15,7 +14,7 @@ function Navigation() {
                     <Link className='nav-link' to='/shop'>
                         SHOP
                     </Link>
-                    <Link className='nav-link' to='/sign-in'>
+                    <Link className='nav-link' to='/auth'>
                         SIGN IN
                     </Link>
                 </div>

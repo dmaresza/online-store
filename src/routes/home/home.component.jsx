@@ -1,8 +1,7 @@
 // import { useState } from 'react'
 import Directory from '../../components/directory/directory.component'
 
-// const Home = () => {
-function Home() {
+const Home = () => {
 
     const categories = [
         {
