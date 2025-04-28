@@ -1,18 +1,20 @@
 import { useState } from 'react';
+
 import FormInput from '../form-input/form-input.component';
 import Button from '../button/button.component'
+
 import {
   signInWithGooglePopup,
   createUserDocumentFromAuth,
-  signInUserWithEmailAndPassword
+  signInAuthUserWithEmailAndPassword
 } from '../../utils/firebase/firebase.utils';
 
-import './sign-in-form.styles.scss'
+import './sign-in-form.styles.scss';
 
 const defaultFormFields = {
   email: '',
   password: '',
-}
+};
 
 const SignInForm = () => {
 
@@ -20,25 +22,24 @@ const SignInForm = () => {
   const { email, password } = formFields;
 
   const resetFormFields = () => {
-    setFormFields(defaultFormFields)
-  }
+    setFormFields(defaultFormFields);
+  };
 
   const signInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(user);
-  }
+    await signInWithGooglePopup();
+  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
-  }
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const response = await signInUserWithEmailAndPassword(email, password);
-      console.log(response);
+      const { user } = await signInAuthUserWithEmailAndPassword(email, password);
+      resetFormFields();
     } catch (error) {
       switch (error.code) {
         case 'auth/wrong-password':
@@ -48,10 +49,10 @@ const SignInForm = () => {
           alert('no user associated with this email');
           break;
         default:
-          console.log(error)
+          console.log(error);
       }
     }
-  }
+  };
 
   return (
     <div className='sign-in-container'>
@@ -81,6 +82,6 @@ const SignInForm = () => {
       </form>
     </div>
   )
-}
+};
 
 export default SignInForm;
