@@ -1,18 +1,20 @@
 import { useState } from 'react';
+import FormInput from '../form-input/form-input.component';
+import Button from '../button/button.component';
 
-import FormInput from '../form-input/form-input.component'
-import Button from '../button/button.component'
+import {
+  createAuthUserWithEmailAndPassword,
+  createUserDocumentFromAuth
+} from '../../utils/firebase/firebase.utils';
 
-import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from '../../utils/firebase/firebase.utils';
-
-import './sign-up-form.styles.scss'
+import './sign-up-form.styles.scss';
 
 const defaultFormFields = {
   displayName: '',
   email: '',
   password: '',
   confirmPassword: ''
-}
+};
 
 const SignUpForm = () => {
 
@@ -20,8 +22,8 @@ const SignUpForm = () => {
   const { displayName, email, password, confirmPassword } = formFields;
 
   const resetFormFields = () => {
-    setFormFields(defaultFormFields)
-  }
+    setFormFields(defaultFormFields);
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -41,13 +43,12 @@ const SignUpForm = () => {
         console.log('user creation encountered an error', error);
       }
     }
-
-  }
+  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
-  }
+  };
 
   return (
     <div className="sign-up-container">
@@ -89,7 +90,7 @@ const SignUpForm = () => {
         <Button type="submit">Sign Up</Button>
       </form>
     </div>
-  )
-}
+  );
+};
 
 export default SignUpForm;

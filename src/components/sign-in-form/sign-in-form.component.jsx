@@ -1,7 +1,6 @@
 import { useState } from 'react';
-
 import FormInput from '../form-input/form-input.component';
-import Button from '../button/button.component'
+import Button from '../button/button.component';
 
 import {
   signInWithGooglePopup,
@@ -17,7 +16,6 @@ const defaultFormFields = {
 };
 
 const SignInForm = () => {
-
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
@@ -81,7 +79,7 @@ const SignInForm = () => {
         </div>
       </form>
     </div>
-  )
+  );
 };
 
 export default SignInForm;

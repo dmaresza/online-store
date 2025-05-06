@@ -28,7 +28,7 @@ const userReducer = (state, action) => {
 
 const INITIAL_STATE = {
   currentUser: null
-}
+};
 
 // actual component
 export const UserProvider = ({ children }) => {

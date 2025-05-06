@@ -1,4 +1,4 @@
-import './form-input.styles.scss'
+import './form-input.styles.scss';
 
 const FormInput = ({ label, ...otherProps }) => {
   return (
@@ -13,6 +13,7 @@ const FormInput = ({ label, ...otherProps }) => {
         </label>
       }
     </div>
-  )
-}
+  );
+};
+
 export default FormInput;

@@ -7,13 +7,12 @@ const addCartItem = (cartItems, productToAdd) => {
     return cartItems.map((item) =>
       item.id == productToAdd.id
         ? { ...item, quantity: item.quantity + 1 }
-        : item
-    );
+        : item);
   }
   else {
     return [...cartItems, { ...productToAdd, quantity: 1 }];
   }
-}
+};
 
 const removeCartItem = (cartItems, productToRemove) => {
   const existingItem = cartItems.find((item) => item.id == productToRemove.id);
@@ -26,11 +25,11 @@ const removeCartItem = (cartItems, productToRemove) => {
         ? { ...item, quantity: item.quantity - 1 }
         : item);
   }
-}
+};
 
 const deleteCartItem = (cartItems, productToDelete) => {
   return cartItems.filter((item) => item.id != productToDelete.id);
-}
+};
 
 export const CartContext = createContext({
   isCartOpen: false,
@@ -46,7 +45,7 @@ export const CartContext = createContext({
 const CART_ACTION_TYPES = {
   SET_CART_ITEMS: 'SET_CART_ITEMS',
   SET_IS_CART_OPEN: 'SET_IS_CART_OPEN'
-}
+};
 
 const INITIAL_STATE = {
   isCartOpen: false,
@@ -104,27 +103,27 @@ export const CartProvider = ({ children }) => {
       })
     );
     // dispatch({ type: CART_ACTION_TYPES.SET_CART_ITEMS, payload: { cartItems: newCartItems, cartTotal: newCartTotal, cartCount: newCartCount } });
-  }
+  };
 
   const addItemToCart = (productToAdd) => {
     const newCartItems = addCartItem(cartItems, productToAdd);
     updateCartItemsReducer(newCartItems);
-  }
+  };
 
   const removeItemFromCart = (productToRemove) => {
     const newCartItems = removeCartItem(cartItems, productToRemove);
     updateCartItemsReducer(newCartItems);
-  }
+  };
 
   const deleteItemFromCart = (productToDelete) => {
     const newCartItems = deleteCartItem(cartItems, productToDelete);
     updateCartItemsReducer(newCartItems);
-  }
+  };
 
   const setIsCartOpen = (bool) => {
     dispatch(createAction(CART_ACTION_TYPES.SET_IS_CART_OPEN, bool));
     // dispatch({ type: CART_ACTION_TYPES.SET_IS_CART_OPEN, payload: bool });
-  }
+  };
 
   const value = {
     isCartOpen,

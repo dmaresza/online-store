@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { CartContext } from "../../contexts/cart.context";
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 
-import './checkout.styles.scss'
+import './checkout.styles.scss';
 
 const Checkout = () => {
   const {
@@ -31,7 +31,7 @@ const Checkout = () => {
         />)}
       <span className='total'>Total: ${cartTotal}</span>
     </div>
-  )
-}
+  );
+};
 
 export default Checkout;

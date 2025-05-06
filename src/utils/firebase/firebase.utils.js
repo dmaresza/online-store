@@ -1,4 +1,4 @@
-import { initializeApp } from 'firebase/app'
+import { initializeApp } from 'firebase/app';
 import {
   getAuth,
   signInWithPopup,
@@ -8,7 +8,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged
-} from 'firebase/auth'
+} from 'firebase/auth';
 import {
   getFirestore,
   doc,
@@ -18,7 +18,7 @@ import {
   writeBatch,
   query,
   getDocs,
-} from 'firebase/firestore'
+} from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCS82ofcxYxHyP5glhndKByuLP8lfqgWxE",
@@ -35,7 +35,7 @@ const firebaseApp = initializeApp(firebaseConfig);
 const googleProvider = new GoogleAuthProvider();
 googleProvider.setCustomParameters({
   prompt: "select_account"
-})
+});
 
 export const auth = getAuth();
 export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider);
@@ -53,7 +53,7 @@ export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => 
   });
 
   await batch.commit();
-}
+};
 
 export const getCategoriesAndDocuments = async () => {
   const collectionRef = collection(db, 'categories');
@@ -67,7 +67,7 @@ export const getCategoriesAndDocuments = async () => {
   }, {});
 
   return categoryMap;
-}
+};
 
 export const createUserDocumentFromAuth = async (userAuth, additionalInformation = {}) => {
   if (!userAuth) return;
@@ -92,18 +92,18 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
     }
   }
   return userDocRef;
-}
+};
 
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
   if (!email || !password) return;
 
   return await createUserWithEmailAndPassword(auth, email, password);
-}
+};
 
 export const signInAuthUserWithEmailAndPassword = async (email, password) => {
   if (!email || !password) return;
   return await signInWithEmailAndPassword(auth, email, password);
-}
+};
 
 export const signOutUser = async () => await signOut(auth);
 
