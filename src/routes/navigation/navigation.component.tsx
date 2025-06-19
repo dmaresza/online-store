@@ -1,4 +1,6 @@
-import { Outlet } from 'react-router-dom';
+/// <reference types="vite-plugin-svgr/client" />
+
+import { Outlet, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectCurrentUser } from '../../store/user/user.selector';
 import { selectIsCartOpen } from '../../store/cart/cart.selector.js';
@@ -14,6 +16,7 @@ const Navigation = () => {
   const isCartOpen = useSelector(selectIsCartOpen);
 
   const signOutUser = () => dispatch(signOutStart());
+  const location = useLocation();
 
   return (
     <>
@@ -26,7 +29,7 @@ const Navigation = () => {
             SHOP
           </NavLink>
           {currentUser ? (
-            <NavLink as='span' onClick={signOutUser}>
+            <NavLink as='span' to={location.pathname} onClick={signOutUser}>
               SIGN OUT
             </NavLink>
           ) : (
