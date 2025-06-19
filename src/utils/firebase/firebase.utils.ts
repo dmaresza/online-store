@@ -21,7 +21,6 @@ import {
   query,
   getDocs,
   QueryDocumentSnapshot,
-  Query
 } from 'firebase/firestore';
 import { Category } from '../../store/categories/category.types';
 
