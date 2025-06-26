@@ -1,5 +1,6 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectCartItems, selectCartTotal } from "../../store/cart/cart.selector";
+import { setIsCartOpen } from "../../store/cart/cart.action";
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 import PaymentForm from "../../components/payment-form/payment-form.component";
 
@@ -9,11 +10,16 @@ import {
   HeaderBlock,
   Total
 } from './checkout.styles';
+import { useEffect } from "react";
 
 const Checkout = () => {
-
+  const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
   const cartTotal = useSelector(selectCartTotal);
+
+  useEffect(() => {
+    dispatch(setIsCartOpen(false));
+  }, []);
 
   return (
     <CheckoutContainer>

@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+import { RemoveButton } from '../checkout-item/checkout-item.styles';
 
 export const CartItemContainer = styled.div`
   width: 100%;
   display: flex;
   height: 80px;
   margin-bottom: 15px;
-
+  align-items: center;
   img {
     width: 30%;
   }
